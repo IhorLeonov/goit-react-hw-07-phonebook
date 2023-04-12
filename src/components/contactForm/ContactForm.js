@@ -11,9 +11,9 @@ import {
 } from './ContactForm.styled';
 
 import { useDispatch } from 'react-redux';
-import { addContact } from 'redux/contactsSlice';
 import { useSelector } from 'react-redux';
-import { getContacts } from 'redux/selectors';
+import { selectContacts } from 'redux/selectors';
+import { addContact } from 'redux/operations';
 
 const notifyError = message => toast.error(message);
 
@@ -33,7 +33,7 @@ const ContactSchema = Yup.object().shape({
 
 export const ContactForm = () => {
   const dispatch = useDispatch();
-  const contacts = useSelector(getContacts);
+  const contacts = useSelector(selectContacts);
 
   return (
     <Formik
@@ -50,13 +50,19 @@ export const ContactForm = () => {
           return notifyError(`${name} is already in contacts.`);
         }
 
-        dispatch(addContact(name, number));
+        dispatch(
+          addContact({
+            name: name,
+            phone: number,
+          })
+        );
+
         actions.resetForm();
       }}
     >
       <Form>
         <FormLabel>
-          Name
+          Name:
           <Field
             type="text"
             name="name"
@@ -65,7 +71,7 @@ export const ContactForm = () => {
           <ErrorMessage name="name" component="span" />
         </FormLabel>
         <FormLabel>
-          Number
+          Number:
           <Field
             type="tel"
             name="number"
