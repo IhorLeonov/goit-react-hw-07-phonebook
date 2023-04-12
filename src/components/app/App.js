@@ -39,6 +39,7 @@ export const App = () => {
     <Layout>
       <Phonebook>
         <MainTitle>Phonebook</MainTitle>
+
         <ContactForm />
         <Filter />
         {!isLoading && <SecondTitle>Contacts</SecondTitle>}
