@@ -16,6 +16,14 @@ const contactsSlice = createSlice({
     items: [],
     isLoading: false,
     error: null,
+    showModal: false,
+    deleteId: 0,
+  },
+  reducers: {
+    toggleModal: (state, action) => {
+      state.showModal = !state.showModal;
+      state.deleteId = action.payload;
+    },
   },
   extraReducers: builder =>
     builder
@@ -62,3 +70,5 @@ const contactsSlice = createSlice({
 });
 
 export const contactsReducer = contactsSlice.reducer;
+
+export const { toggleModal } = contactsSlice.actions;
