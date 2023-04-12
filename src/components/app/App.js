@@ -43,7 +43,7 @@ export const App = () => {
         <ContactForm />
         <Filter />
         {!isLoading && <SecondTitle>Contacts</SecondTitle>}
-        {isLoading && !error && <SecondTitle>Contacts loading...</SecondTitle>}
+        {isLoading && !error && <SecondTitle>Loading...</SecondTitle>}
         {contacts?.length < 1 ? (
           <Notification message={'Phonebook is empty!'} />
         ) : (
