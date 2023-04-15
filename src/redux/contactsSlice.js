@@ -10,6 +10,10 @@ import { addContact, deleteContact, fetchContacts } from './operations';
 //   state.error = action.payload;
 // };
 
+const arr = [0, 20, 50, 60, 100];
+const arrr = Math.max.apply(null, arr);
+console.log(arrr);
+
 const contactsSlice = createSlice({
   name: 'contacts',
   initialState: {
@@ -45,7 +49,7 @@ const contactsSlice = createSlice({
         );
         state.items.splice(index, 1);
       })
-      // Группируем выполнение одинакового кода в addMatcher
+      // Group the same code in addMatcher
       .addMatcher(
         isAnyOf(
           fetchContacts.pending,
@@ -70,5 +74,4 @@ const contactsSlice = createSlice({
 });
 
 export const contactsReducer = contactsSlice.reducer;
-
 export const { toggleModal } = contactsSlice.actions;

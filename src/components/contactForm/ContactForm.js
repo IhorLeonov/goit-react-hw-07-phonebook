@@ -35,6 +35,15 @@ export const ContactForm = () => {
   const dispatch = useDispatch();
   const contacts = useSelector(selectContacts);
 
+  const handleAddContact = (name, number) => {
+    dispatch(
+      addContact({
+        name: name,
+        phone: number,
+      })
+    );
+  };
+
   return (
     <Formik
       initialValues={{ name: '', number: '' }}
@@ -50,13 +59,7 @@ export const ContactForm = () => {
           return notifyError(`${name} is already in contacts.`);
         }
 
-        dispatch(
-          addContact({
-            name: name,
-            phone: number,
-          })
-        );
-
+        handleAddContact(name, number);
         actions.resetForm();
       }}
     >

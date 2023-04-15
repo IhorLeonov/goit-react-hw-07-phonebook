@@ -7,7 +7,7 @@ export const selectFilter = state => state.filter;
 export const selectShowModal = state => state.contacts.showModal;
 export const selectDeleteId = state => state.contacts.deleteId;
 
-// Составной селектор
+// Compound selector
 // export const selectFiltredContacts = state => {
 //   const contacts = selectContacts(state);
 //   const filterValue = selectFilter(state);
@@ -17,7 +17,7 @@ export const selectDeleteId = state => state.contacts.deleteId;
 //   );
 // };
 
-// Мемоизируем составной селектор
+// Memoize selector
 export const selectFiltredContacts = createSelector(
   // Массив входных селекторов
   [selectContacts, selectFilter],

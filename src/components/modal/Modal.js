@@ -16,7 +16,6 @@ export const Modal = ({ children }) => {
         handleToggleModal();
       }
     };
-
     window.addEventListener('keydown', handleKeyDown);
 
     return () => {

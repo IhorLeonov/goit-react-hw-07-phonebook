@@ -1,6 +1,7 @@
 import { deleteContact } from 'redux/operations';
 import { useDispatch } from 'react-redux';
 import { toggleModal } from 'redux/contactsSlice';
+
 import {
   DeleteModal,
   Text,
@@ -11,20 +12,19 @@ import {
 export const DeleteContactWarning = ({ id }) => {
   const dispatch = useDispatch();
 
-  const handleDelete = () => {
+  const handleDeleteContact = () => {
     dispatch(deleteContact(id));
     dispatch(toggleModal(id));
   };
-
-  const handleToggleModal = () => dispatch(toggleModal(id));
+  const handleCloseModal = () => dispatch(toggleModal(id));
 
   return (
     <DeleteModal>
       <Text>A you sure?</Text>
-      <ButtonOk type="button" onClick={handleDelete}>
+      <ButtonOk type="button" onClick={handleDeleteContact}>
         Ok
       </ButtonOk>
-      <ButtonNo type="button" onClick={handleToggleModal}>
+      <ButtonNo type="button" onClick={handleCloseModal}>
         No
       </ButtonNo>
     </DeleteModal>
